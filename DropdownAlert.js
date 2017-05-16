@@ -339,6 +339,7 @@ export default class DropdownAlert extends Component {
     return null
   }
   renderStatusBar(backgroundColor, barStyle, translucent) {
+    return null;
     if (Platform.OS === 'android') {
       StatusBar.setBackgroundColor(backgroundColor, true)
       StatusBar.setTranslucent(translucent)
@@ -423,10 +424,15 @@ export default class DropdownAlert extends Component {
                 {this.renderButton(this.props.cancelBtnImageSrc, StyleSheet.flatten(this.props.cancelBtnImageStyle), this.onCancel, backgroundColor, this.props.showCancel)}
               </View>
             </TouchableHighlight>
+            <View style={{
+              top: this.state.topValue,
+            }}>
+              {this.props.children}
+            </View>
           </Animated.View>
       )
     }
-    return null
+    return (this.props.children ? this.props.children : null);
   }
   render() {
     return (
